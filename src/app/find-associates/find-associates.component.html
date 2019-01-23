@@ -1,0 +1,28 @@
+<div class="container-fluid" style="padding: 10px; ">
+  <form class="form-inline">
+    <div class="form-group">
+      <label>Search by Location</label>
+      <input class="form-control" name="searchInput" placeholder="Search" #searchInput="ngModel" [(ngModel)]="searchText" style="width: 80%;">
+      <button class="btn btn-outline-primary" (click)="searchText=''">X</button>
+    </div>
+  </form>
+  <table class="table table-sm">
+    <thead>
+    <th>Name</th>
+    <th>Email</th>
+    <th>City</th>
+    <th>State</th>
+    </thead>
+    <ng-container *ngFor="let user of users">
+      <tr class="table-dark" *ngIf="filterCondition(user)">
+        <td>{{user.firstName}} {{user.lastName}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.city}}</td>
+        <td>{{user.state}}</td>
+      </tr>
+    </ng-container>
+  </table>
+</div>
+
+
+

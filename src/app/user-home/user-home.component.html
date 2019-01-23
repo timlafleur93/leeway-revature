@@ -1,0 +1,52 @@
+<!-- Special thanks to Start Bootstrap for this template -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-5" *ngIf="currentUser">
+      <h1>My Info</h1>
+      <form [formGroup]="this.userService.form" (ngSubmit)="onSubmit()">
+        <input type="hidden" formControlName="$key">
+        <div class="form-group">
+          <label>First Name</label>
+          <input formControlName="firstName" class="form-control" [ngModel]="currentUser.firstName" [ngClass]="{'is-invalid': submitted && formControls.firstName.errors}">
+          <div class="invalid-feedback" *ngIf="submitted && formControls.firstName.errors">
+            This field is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input formControlName="lastName" class="form-control" [ngModel]="currentUser.lastName" [ngClass]="{'is-invalid': submitted && formControls.lastName.errors}">
+          <div class="invalid-feedback" *ngIf="submitted && formControls.lastName.errors">
+            This field is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input formControlName="email" class="form-control" [ngModel]="userEmail" readonly [ngClass]="{'is-invalid': submitted && formControls.email.errors}">
+          <div class="invalid-feedback" *ngIf="submitted && formControls.email.errors">
+            This field is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label>City</label>
+          <input formControlName="city" class="form-control" [ngModel]="currentUser.city" [ngClass]="{'is-invalid': submitted && formControls.city.errors}">
+          <div class="invalid-feedback" *ngIf="submitted && formControls.city.errors">
+            This field is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label>State</label>
+          <input formControlName="state" class="form-control" [ngModel]="currentUser.state" [ngClass]="{'is-invalid': submitted && formControls.state.errors}">
+          <div class="invalid-feedback" *ngIf="submitted && formControls.state.errors">
+            This field is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="submit" class="btn btn-primary" value="Submit">
+        </div>
+      </form>
+      <div class="alert alert-info" *ngIf="showSuccessMessage">
+        Submitted successfully.
+      </div>
+    </div>
+  </div>
+</div>
